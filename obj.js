@@ -24,14 +24,14 @@ class Person {
   }
 }
 
-var person1 = new Person("John", "Doe", "M");
-console.log(person1.first_name);
-console.log(person1.last_name);
-console.log(person1.gender);
+let person1 = new Person("John", "Doe", "M");
+// console.log(person1.first_name);
+// console.log(person1.last_name);
+// console.log(person1.gender);
 
-console.log(Person.staticMethod());
+// console.log(Person.staticMethod());
 Person.age = 30;
-console.log(Person.age);
+// console.log(Person.age);
 
 
 // promise
@@ -42,20 +42,53 @@ let myPromise = new Promise((resolve, reject) => {
 });
 
 myPromise.then((successMessage) => {
-  console.log(successMessage);
+  // console.log(successMessage);
 });
 
 
 // callback function
 function finished(){
-	console.log("Finished");
+	// console.log("Finished");
 }
 
 function increment(num, callBack){
 	for(var i = 0; i <= num; i++){
-  	console.log(i);
+  	// console.log(i);
   }
   return callBack();
 }
 
 increment(5, finished);
+
+
+class Patient {
+	constructor(first_name, last_name, doctor) {
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.doctor	= doctor;
+		doctor.addPatient(this);
+	}
+
+	setDoctor() {
+		return this.doctor;
+	}
+}
+
+class Doctor {
+
+	constructor(first_name, last_name) {
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.patients = [];
+	}
+
+	addPatient(patient) {
+		this.patients.push(patient);
+	}
+}
+
+let doctor = new Doctor('John', 'Doe');
+let patient = new Patient('Joan', 'Doe', doctor);
+console.log(doctor);
+console.log(patient);
+
